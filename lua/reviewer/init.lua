@@ -72,7 +72,7 @@ function D.escape_string_for_json(str)
 	return str:gsub('[\\"%b\\n\\r\\t]', escapes)
 end
 
-function M.display_response(response)
+function D.display_response(response)
 	local decoded = vim.fn.json_decode(response)
 	local content = decoded.choices[1].message.content
 
