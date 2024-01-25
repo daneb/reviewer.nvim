@@ -31,7 +31,7 @@ function reviewer.get_visual_selection()
 		lines[#lines] = string.sub(lines[#lines], 1, end_col)
 	end
 
-	print("Jelly")
+	print(lines[1])
 
 	return table.concat(lines, "\n")
 end
