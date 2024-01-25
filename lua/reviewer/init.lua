@@ -38,7 +38,10 @@ function D.send_code_to_api(code)
 	local escaped_code = D.escape_string_for_json(code)
 	local payload = {
 		messages = {
-			{ role = "system", content = "Review my code as an expert senior developer" },
+			{
+				role = "system",
+				content = "Review my code as an expert senior developer. Be critical. Focus on loose coupling, high cohesion. Refactor if needed.",
+			},
 			{ role = "user", content = escaped_code },
 		},
 		temperature = 0.7,
@@ -81,7 +84,7 @@ function D.display_response(response)
 	vim.api.nvim_open_win(
 		buf,
 		true,
-		{ width = 80, height = 30, row = 10, col = 10, relative = "editor", style = "minimal" }
+		{ width = 100, height = 30, row = 10, col = 10, relative = "editor", style = "minimal" }
 	)
 
 	-- Set the lines of the buffer
