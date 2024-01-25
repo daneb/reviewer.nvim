@@ -72,6 +72,27 @@ function D.escape_string_for_json(str)
 	return str:gsub('[\\"%b\\n\\r\\t]', escapes)
 end
 
+function M.display_response(response)
+	local decoded = vim.fn.json_decode(response)
+	local content = decoded.choices[1].message.content
+
+	-- Create a new buffer and open it in a new window
+	local buf = vim.api.nvim_create_buf(false, true) -- Create new buffer
+	vim.api.nvim_open_win(
+		buf,
+		true,
+		{ width = 80, height = 30, row = 10, col = 10, relative = "editor", style = "minimal" }
+	)
+
+	-- Set the lines of the buffer
+	local lines = vim.split(content, "\n")
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+	-- Optionally, set buffer options for better readability
+	vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+	vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+end
+
 function D.main_function()
 	local code = D.get_visual_selection()
 	local response = D.send_code_to_api(code)
