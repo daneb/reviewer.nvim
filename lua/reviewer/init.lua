@@ -84,7 +84,16 @@ function D.display_response(response)
 	vim.api.nvim_open_win(
 		buf,
 		true,
-		{ width = 100, height = 30, row = 10, col = 10, relative = "editor", style = "minimal" }
+		{
+			width = 100,
+			height = 30,
+			row = 10,
+			col = 10,
+			relative = "editor",
+			style = "minimal",
+			border = "double",
+			title = "AI Reviewer:",
+		}
 	)
 
 	-- Set the lines of the buffer
