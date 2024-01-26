@@ -40,7 +40,7 @@ function D.send_code_to_api(code)
 		messages = {
 			{
 				role = "system",
-				content = "Review my code as an expert senior developer. Be critical. Focus on loose coupling, high cohesion. Refactor if needed.",
+				content = "Review my code as an expert senior developer. Be critical. Focus on readibility and maintainability. Refactor if needed.",
 			},
 			{ role = "user", content = escaped_code },
 		},
